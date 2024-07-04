@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CreateReservationDto } from './dto/create-reservation';
-import { UpdateReservationDto } from './dto/update-reservation';
+import { CreateReservationDto } from './dto/create-reservation.dto';
+import { UpdateReservationDto } from './dto/update-reservation.dto';
 import { ReservationsRepository } from './reservations.repository';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class ReservationsService {
   async create(createReservationDto: CreateReservationDto): Promise<any> {
     const reservationData = {
       ...createReservationDto,
-      userId: this.getUserId(),  // Gunakan metode untuk mendapatkan userId secara dinamis
+      userId: this.getUserId(), 
     };
 
     try {

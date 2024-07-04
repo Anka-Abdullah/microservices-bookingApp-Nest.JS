@@ -8,10 +8,10 @@ COPY tsconfig.json nest-cli.json ./
 
 RUN npm install -g pnpm && pnpm install
 
-COPY apps/reservations apps/reservations
+COPY apps/auth apps/auth
 COPY libs libs
 
-RUN cd apps/reservations && pnpm install && pnpm run build reservations
+RUN cd apps/auth && pnpm install && pnpm run build auth
 
 # Production stage
 FROM node:alpine as production
@@ -27,4 +27,4 @@ RUN npm install -g pnpm && pnpm install --prod
 
 COPY --from=development /usr/src/app/dist ./dist
 
-CMD ["node", "dist/apps/reservations/main"]
+CMD ["node", "dist/apps/auth/main"]

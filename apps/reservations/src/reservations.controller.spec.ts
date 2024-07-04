@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ReservationsController } from './reservations.controller';
 import { ReservationsService } from './reservations.service';
-import { CreateReservationDto } from './dto/create-reservation';
-import { UpdateReservationDto } from './dto/update-reservation';
+import { CreateReservationDto } from './dto/create-reservation.dto';
+import { UpdateReservationDto } from './dto/update-reservation.dto';
 
 describe('ReservationsController', () => {
   let controller: ReservationsController;

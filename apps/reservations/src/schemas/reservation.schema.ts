@@ -4,19 +4,19 @@ import { Schema as MongooseSchema } from 'mongoose';
 
 @Schema({ timestamps: true })
 export class ReservationDocument extends AbstractDocument {
-  @Prop({ required: true, type: Date })
+  @Prop({ required: false, type: Date })
   startDate: Date;
 
-  @Prop({ required: true, type: Date })
+  @Prop({ required: false, type: Date })
   endDate: Date;
 
-  @Prop({ required: true, type: MongooseSchema.Types.ObjectId, ref: 'User' })
+  @Prop({ required: false, type: MongooseSchema.Types.ObjectId, ref: 'User' })
   userId: string;
 
-  @Prop({ required: true, type: MongooseSchema.Types.ObjectId, ref: 'Place' })
+  @Prop({ required: false, type: MongooseSchema.Types.ObjectId, ref: 'Place' })
   placeId: string;
 
-  @Prop({ required: true, type: String })
+  @Prop({ required: false, type: String })
   invoiceId: string;
 }
 
