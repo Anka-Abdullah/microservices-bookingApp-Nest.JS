@@ -9,6 +9,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersRepository } from './users.repository';
 import { getHoroscopeSign } from './utils/horoscope.util';
 import { getZodiacSign } from './utils/zodiac.util';
+import { GetUserDto } from './dto/get-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -53,11 +54,11 @@ export class UsersService {
     }
   }
 
-  async findOneById(_id: string): Promise<any> {
+  async getUser(getUserDto : GetUserDto): Promise<any> {
     try {
-      return await this.usersRepository.findOne({ _id });
+      return await this.usersRepository.findOne(getUserDto);
     } catch (error) {
-      throw new Error(`Error finding user with id ${_id}: ${error.message}`);
+      throw new Error(`Error finding user. ${error.message}`);
     }
   }
 

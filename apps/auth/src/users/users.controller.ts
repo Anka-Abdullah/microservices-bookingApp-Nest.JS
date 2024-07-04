@@ -5,21 +5,22 @@ import {
   Param,
   NotFoundException,
   Body,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { JwtAuthGuard } from '../guards/jwt-auth.guard';
+import { CurrentUser } from '../current-user.decorator';
+import { UserDocument } from './schemas/user.schema';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
-    try {
-      return await this.usersService.findOneById(id);
-    } catch (error) {
-      throw new NotFoundException(error.message);
-    }
+  @UseGuards(JwtAuthGuard)
+  @Get()
+  async getUser(@CurrentUser() user: UserDocument) {
+    return user;
   }
 
   @Patch(':id')

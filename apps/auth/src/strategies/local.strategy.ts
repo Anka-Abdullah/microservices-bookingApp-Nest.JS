@@ -7,7 +7,7 @@ import { UserDocument } from '../users/schemas/user.schema';
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private userService: UsersService) {
-    super({ usernameField: 'email' }); // atau sesuai dengan field yang digunakan untuk otentikasi
+    super({ usernameField: 'email' }); 
   }
 
   async validate(email: string, password: string): Promise<UserDocument> {

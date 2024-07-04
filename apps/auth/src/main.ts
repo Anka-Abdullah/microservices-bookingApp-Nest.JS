@@ -3,10 +3,12 @@ import { AuthModule } from './auth.module';
 import { ConfigService } from '@nestjs/config';
 import { ValidationPipe } from '@nestjs/common';
 import { Transport } from '@nestjs/microservices';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AuthModule);
-
+  app.use(cookieParser());
+  
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   const configService = app.get(ConfigService);
   const port =
