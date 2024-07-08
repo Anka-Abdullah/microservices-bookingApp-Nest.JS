@@ -10,10 +10,12 @@ export class ReservationDocument extends AbstractDocument {
   @Prop({ required: false, type: Date })
   endDate: Date;
 
-  @Prop({ required: false, type: MongooseSchema.Types.ObjectId, ref: 'User' })
+  // @Prop({ required: false, type: MongooseSchema.Types.ObjectId, ref: 'User' })
+  @Prop()
   userId: string;
 
-  @Prop({ required: false, type: MongooseSchema.Types.ObjectId, ref: 'Place' })
+  // @Prop({ required: false, type: MongooseSchema.Types.ObjectId, ref: 'Place' })
+  @Prop()
   placeId: string;
 
   @Prop({ required: false, type: String })

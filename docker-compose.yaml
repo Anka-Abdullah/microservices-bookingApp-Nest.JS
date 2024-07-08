@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./apps/reservations/Dockerfile
-      target: ${TARGET:-development}
+      target: development
     image: yes_reservations_image:latest
     container_name: yes_reservations
     command: pnpm run start:dev reservations
@@ -15,13 +15,11 @@ services:
       - '3000:3000'
     volumes:
       - .:/usr/src/app
-      - /usr/src/app
-
   auth:
     build:
       context: .
       dockerfile: ./apps/auth/Dockerfile
-      target: ${TARGET:-development}
+      target: development
     image: yes_auth_image:latest
     container_name: yes_auth
     command: pnpm run start:dev auth
@@ -31,4 +29,3 @@ services:
       - '3001:3001'
     volumes:
       - .:/usr/src/app
-      - /usr/src/app

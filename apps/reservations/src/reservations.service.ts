@@ -7,10 +7,10 @@ import { ReservationsRepository } from './reservations.repository';
 export class ReservationsService {
   constructor(private readonly reservationRepository: ReservationsRepository) {}
 
-  async create(createReservationDto: CreateReservationDto): Promise<any> {
+  async create(createReservationDto: CreateReservationDto, userId: string): Promise<any> {
     const reservationData = {
       ...createReservationDto,
-      userId: this.getUserId(), 
+      userId, 
     };
 
     try {
@@ -53,12 +53,5 @@ export class ReservationsService {
     } catch (error) {
       throw new Error(`Error removing reservation with id ${_id}: ${error.message}`);
     }
-  }
-
-  // Metode untuk mendapatkan userId secara dinamis, misalnya dari konteks pengguna yang saat ini sedang masuk
-  private getUserId(): string {
-    // Implementasikan logika untuk mendapatkan userId
-    // Contoh: return this.authService.getUserId();
-    return 'dynamic-user-id'; // Placeholder
   }
 }

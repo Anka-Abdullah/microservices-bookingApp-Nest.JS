@@ -10,8 +10,8 @@ import {
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { JwtAuthGuard } from '../guards/jwt-auth.guard';
-import { CurrentUser } from '../current-user.decorator';
 import { UserDocument } from './schemas/user.schema';
+import { CurrentUser } from '@app/common';
 
 @Controller('users')
 export class UsersController {
